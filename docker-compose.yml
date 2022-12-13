@@ -1,8 +1,25 @@
 version: '3.4'
 
 services:
+  appdb:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 8002:1433
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=password@12345#
   tasktracker:
+    container_name: tasktracker-app
     image: ${DOCKER_REGISTRY-}tasktracker
     build:
       context: .
       dockerfile: TaskTracker/Dockerfile
+    ports:
+      - 8001:80
+    depends_on:
+      - appdb
+    environment:
+      - DB_HOST=appdb
+      - DB_NAME=TaskTrackerApp
+      - DB_SA_PASSWORD=password@12345#
