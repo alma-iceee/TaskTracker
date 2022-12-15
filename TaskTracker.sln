@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker", "TaskTracker\TaskTracker.csproj", "{F366DBB1-87E0-4CEA-975A-ADD6EEFB23F3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskTracker", "TaskTracker\TaskTracker.csproj", "{F366DBB1-87E0-4CEA-975A-ADD6EEFB23F3}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{F5AFE358-5A46-48C9-A2B0-F36CF21F5AB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaskTracker.Test", "TaskTracker.Test\TaskTracker.Test.csproj", "{50AF527D-CEA5-4FA8-972B-A83D2B63196B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{F5AFE358-5A46-48C9-A2B0-F36CF21F5AB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F5AFE358-5A46-48C9-A2B0-F36CF21F5AB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5AFE358-5A46-48C9-A2B0-F36CF21F5AB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50AF527D-CEA5-4FA8-972B-A83D2B63196B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50AF527D-CEA5-4FA8-972B-A83D2B63196B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50AF527D-CEA5-4FA8-972B-A83D2B63196B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50AF527D-CEA5-4FA8-972B-A83D2B63196B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
