@@ -29,8 +29,8 @@ namespace TaskTracker.Test
             var result = await controller.Get();
 
             // Assert
-            var actionResult = Assert.IsType<OkObjectResult>(result);
-            var model = Assert.IsAssignableFrom<IEnumerable<Project>>(result);
+            var actionResult = Assert.IsType<StatusCodeResult>(result);
+            //var model = Assert.Equal((actionResult.StatusCode));
             //Assert.Equal(GetTestProjects().Count, model.Count());
         }
 
