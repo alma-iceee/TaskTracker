@@ -19,5 +19,5 @@ git clone https://github.com/alma-iceee/TaskTracker.git
 Run project using this command:
 
 ```
-docker-compose exec app
+docker-compose up
 ```
