@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using System;
@@ -15,13 +16,11 @@ namespace TaskTracker.Test
     public class ProjectsControllerTests
     {
         [Fact]
-        public async void IndexReturnsAViewResultWithAListOfUsers()
+        public async void GetProjects()
         {
-            var mockUnitOfWork = MockUnitOfWorkWrapper.GetMock();
-            var _unitOfWork = mockUnitOfWork.Object;
+            var _unitOfWork = MockWrapper.GetUnitOfWorkMock().Object;
 
-            var mockLogger = new Mock<ILogger<ProjectController>>();
-            ILogger<ProjectController> _logger = mockLogger.Object;
+            var _logger = MockWrapper.GetProjectControllerLoggerMock().Object;
 
             var controller = new ProjectController(_logger, _unitOfWork);
 
@@ -29,9 +28,45 @@ namespace TaskTracker.Test
             var result = await controller.Get();
 
             // Assert
-            var actionResult = Assert.IsType<StatusCodeResult>(result);
-            //var model = Assert.Equal((actionResult.StatusCode));
-            //Assert.Equal(GetTestProjects().Count, model.Count());
+            var okObjectResult = Assert.IsType<OkObjectResult>(result);
+
+            Assert.Equal(okObjectResult.StatusCode, StatusCodes.Status200OK);
+        }
+
+        [Fact]
+        public async void GetProject()
+        {
+            var _unitOfWork = MockWrapper.GetUnitOfWorkMock().Object;
+
+            var _logger = MockWrapper.GetProjectControllerLoggerMock().Object;
+
+            var controller = new ProjectController(_logger, _unitOfWork);
+
+            // Act
+            var result = await controller.Get(0);
+
+            // Assert
+            var notFoundObjectResult = Assert.IsType<NotFoundObjectResult>(result);
+
+            Assert.Equal(notFoundObjectResult.StatusCode, StatusCodes.Status404NotFound);
+        }
+
+        [Fact]
+        public async void PostProject()
+        {
+            var _unitOfWork = MockWrapper.GetUnitOfWorkMock().Object;
+
+            var _logger = MockWrapper.GetProjectControllerLoggerMock().Object;
+
+            var controller = new ProjectController(_logger, _unitOfWork);
+
+            // Act
+            var result = await controller.Get(0);
+
+            // Assert
+            var notFoundObjectResult = Assert.IsType<NotFoundObjectResult>(result);
+
+            Assert.Equal(notFoundObjectResult.StatusCode, StatusCodes.Status404NotFound);
         }
 
         private List<Project> GetTestProjects()
