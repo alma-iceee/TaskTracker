@@ -20,3 +20,9 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "TaskTracker.dll"]
+
+FROM build AS test
+# set the directory to be within the unit test project
+WORKDIR "/src/TaskTracker.Test"
+# run the unit tests
+RUN dotnet test --logger:trx
