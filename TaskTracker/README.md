@@ -21,5 +21,3 @@ Run project using this command:
 ```
 docker-compose exec app
 ```
-
-Done!
